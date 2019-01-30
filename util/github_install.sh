@@ -1,3 +1,5 @@
+#/bin/sh
+
 apt-get install \
 		build-essential \
 		avr-libc \
