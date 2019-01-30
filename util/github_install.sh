@@ -14,6 +14,7 @@ apt-get -y install \
 		gcc-avr \
 		git \
 		libnewlib-arm-none-eabi \
+    make \
 		unzip \
 		wget \
 		zip
