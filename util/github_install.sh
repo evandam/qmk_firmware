@@ -1,7 +1,7 @@
 #/bin/sh
 apt-get update
 
-apt-get install \
+apt-get -y install \
 		build-essential \
 		avr-libc \
 		binutils-arm-none-eabi \
