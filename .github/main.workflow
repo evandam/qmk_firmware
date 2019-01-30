@@ -5,7 +5,7 @@ workflow "New workflow" {
 
 action "setup environment" {
   uses = "actions/bin/sh@master"
-  args = "util/qmk_install.sh"
+  args = "util/github_install.sh"
 }
 
 action "make" {
