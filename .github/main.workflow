@@ -1,15 +1,9 @@
 workflow "New workflow" {
   on = "push"
-  resolves = ["make"]
+  resolves = ["setup and make"]
 }
 
-action "setup environment" {
+action "setup and make" {
   uses = "actions/bin/sh@master"
-  args = "util/github_install.sh"
-}
-
-action "make" {
-  uses = "actions/bin/sh@master"
-  args = "make preonic/rev3:evandam:dfu-util"
-  needs = ["setup environment"]
+  args = "[\"util/github_install.sh\", \"make preonic/rev3:evandam:dfu-util\"]"
 }
