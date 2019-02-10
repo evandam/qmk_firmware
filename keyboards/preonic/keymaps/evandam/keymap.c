@@ -37,8 +37,7 @@ enum preonic_keycodes {
 };
 
 #define NAV MO(_NAV)
-#define VIM_W LCTL(KC_RGHT)
-#define VIM_B LCTL(KC_LEFT)
+#define SHENTER RSFT_T(KC_ENTER)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -48,19 +47,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * | Tab  |   Q  |   W  |   E  |   R  |   T  |   Y  |   U  |   I  |   O  |   P  | Del  |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * | Nav  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  "   |
+ * | Ctrl |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  "   |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter/Shift |
+ * | Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |ShEnt |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * | Ctrl | GUI  | Nav  | Alt  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
+ * | Nav  | Ctrl | GUI  | Alt  |Lower |    Space    |Raise | Alt  | GUI  | Ctrl | Nav  |
  * `-----------------------------------------------------------------------------------'
  */
 [_QWERTY] = LAYOUT_preonic_grid( \
-  KC_GESC, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC,  \
+  KC_GESC, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_DEL,  \
-  NAV,     KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,  \
-  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, RSFT_T(KC_ENTER), \
-  KC_LCTL, KC_LGUI, NAV,     KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT   \
+  KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT, \
+  KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, SHENTER, \
+  NAV,     KC_LCTL, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_RALT, KC_RGUI, KC_RCTL, NAV      \
 ),
 
 /* Lower
@@ -86,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Raise
  * ,-----------------------------------------------------------------------------------.
- * |   `  |   1  |   2  |   3  |   4  |   5  |   6  |   7  |   8  |   9  |   0  | Bksp |
+ * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 | F11  | F12  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |   `  |  F1  |  F2  |  F3  |  F4  |   5  |   6  |   7  |   8  |   9  |   0  | Del  |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -98,7 +97,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_RAISE] = LAYOUT_preonic_grid( \
-  KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_BSPC, \
+  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  \
   KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_DEL,  \
   KC_DEL,  KC_F5 ,  KC_F6 ,  KC_F7 ,  KC_F8  , _______, _______, KC_MINS, KC_PLUS, KC_LBRC, KC_RBRC, KC_BSLS, \
   _______, KC_F9,   KC_F10 , KC_F11 , KC_F12 , _______, _______, _______, _______, KC_PGUP, KC_PGDN, _______, \
@@ -109,20 +108,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |  Esc |      |      |      |      |      |      |      |      |      |      | Bksp |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |Vim-W |      |      |      | Home | PgDn | PgUp | End  |      |  Del |
+ * |      | PgUp |  Up  | PgDn |      |      |      | PgUp |  Up  | PgDn |      |  Del |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |      | Left | Down | Up   |Right |      |      |
+ * |      | Left | Down |Right |      |      | Home | Left | Down |Right |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
- * |      |      |      |      |      |Vim-B |      |      |      |      |      |      |
+ * |      |      |      |      |      |      | End  |      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_NAV] = LAYOUT_preonic_grid( \
   KC_ESC,  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_BSPC, \
-  _______, _______, VIM_W,   _______, _______, _______, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______, KC_DEL,  \
-  _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______, \
-  _______, _______, _______, _______, _______, VIM_B,   _______, _______, _______, _______, _______, _______, \
+  _______, KC_PGUP, KC_UP,   KC_PGDN, _______, _______, _______, KC_PGUP, KC_UP,   KC_PGDN, _______, KC_DEL,  \
+  _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______, \
+  _______, _______, _______, _______, _______, _______, KC_END,  _______, _______, _______, _______, _______, \
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______  \
 ),
 
